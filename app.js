@@ -88,8 +88,8 @@ app.use((req,res,next)=>{
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
-app.all("*",(req,res)=>{
-    res.redirect("/listings");  // ya "/" agar home route hai
+app.use((req,res)=>{
+    res.redirect("/listings");
 });
 app.use((err,req,res,next)=>{
     let {statusCode=500,message="something went worng!"}=err;
